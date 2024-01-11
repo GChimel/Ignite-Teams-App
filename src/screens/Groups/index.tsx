@@ -4,17 +4,18 @@ import { Container } from './styles';
 import { Header } from '@components/Header';
 import { Highlight } from '@components/Highlight';
 import { GroupCard } from '@components/GroupCard';
+import { ListEmpty } from '@components/ListEmpty';
 
 export function Groups() {
 
-  const [groups, setGroups] = useState(['Jogadores de Basquete', 'Jogadores de Futebol', 'Jogadores de Tenis', 'Jogadores de Volei']);
+  const [groups, setGroups] = useState([]);
 
   return (
     <Container>
       <Header/>
       <Highlight
         title='Turmas'
-        subtitle="TESTE"
+        subtitle="Jogue com a sua turma"
       />
 
       <FlatList
@@ -23,6 +24,8 @@ export function Groups() {
         renderItem={({item}) => (
           <GroupCard title={item}
         />)}
+        contentContainerStyle={groups.length === 0 && {flex: 1}}
+        ListEmptyComponent={() => <ListEmpty message='Que tal cadastrar a primeira turma?'/>}
       />
       
     </Container>
