@@ -5,6 +5,8 @@ import { Loading } from '@components/Loading';
 import { Groups } from '@screens/Groups';
 import theme from '@theme/index';
 
+import { NewGroup } from '@screens/NewGroup';
+
 export default function App() {
   // Lógica de carregamento das fontes
   const [fonstLoad] = useFonts({Roboto_400Regular, Roboto_700Bold});
@@ -16,7 +18,7 @@ export default function App() {
         backgroundColor='transparent'
         translucent
       />
-      {fonstLoad ? <Groups/> : <Loading/>}
+      {fonstLoad ? <NewGroup/> : <NewGroup/>}
     </ThemeProvider>
   );
 }
