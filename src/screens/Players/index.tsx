@@ -4,6 +4,7 @@ import { Highlight } from '@components/Highlight';
 import { ButtonIcon } from '@components/ButtonIcon';
 import { Input } from '@components/Input';
 import { Filter } from '@components/Filter';
+
 export function Players() {
     return(
         <Container>
@@ -22,9 +23,9 @@ export function Players() {
                     icon='add'
                 />
             </Form>
+            
             <Filter
-                title='teste'
-                isActive
+                title='Time B'
             />
         
         </Container>
