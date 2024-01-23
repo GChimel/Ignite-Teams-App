@@ -3,8 +3,15 @@ import { Container, Content, Icon } from './styles';
 import { Highlight } from '@components/Highlight';
 import { Button } from '@components/Button';
 import { Input } from '@components/Input';
+import { useNavigation } from '@react-navigation/native';
 
 export function NewGroup() {
+
+    const navigation = useNavigation();
+    function hundleNewGroup() {
+        navigation.navigate('players',{ group: 'teste' });
+    }
+
     return(
         <Container>
             <Header
@@ -25,6 +32,7 @@ export function NewGroup() {
                 <Button
                     title='Criar'
                     style={{ marginTop: 20 }}
+                    onPress={hundleNewGroup}
                 />
             </Content>
         </Container>

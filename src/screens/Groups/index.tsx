@@ -13,10 +13,10 @@ export function Groups() {
 
   const [groups, setGroups] = useState([]);
 
-
   const navigation = useNavigation();
+
   function handleNewGroup(){
-    navigation.navigate('groups');
+    navigation.navigate('new');
   }
 
   return (
