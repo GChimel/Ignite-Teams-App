@@ -6,4 +6,3 @@ export const Container = styled(SafeAreaView)`
     padding: 24px;
     background-color : ${({theme}) => theme.COLORS.GRAY_600} ;
 `;
-
