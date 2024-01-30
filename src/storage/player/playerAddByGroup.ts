@@ -2,6 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { PLAYER_COLLECTION } from "@storage/storageConfig";
 import { AppError } from "@utils/AppError";
 import { PlayerStorageDTO } from "./PlayerStorageDTO";
+import { playersGetByGroup } from "./playersGetByGroup";
 
 export async function playerAddByGroup(newPlayer: PlayerStorageDTO, group: string) {
   try {
@@ -11,8 +12,17 @@ export async function playerAddByGroup(newPlayer: PlayerStorageDTO, group: strin
       @ignite-teams:players-amigos
       @ignite-teams:players-pre
     */
+    const storagedPlayers = await playersGetByGroup(group);
 
-    await AsyncStorage.setItem(`${PLAYER_COLLECTION}-${group}`, '')
+    const playerAlreadyExists = storagedPlayers.filter((player) => player.name === newPlayer.name);
+
+    if (playerAlreadyExists.length > 0) {
+      throw new AppError('Essa pessoa já existe nessa turma!');
+    }
+
+    const storage = JSON.stringify([...storagedPlayers, newPlayer]);
+
+    await AsyncStorage.setItem(`${PLAYER_COLLECTION}-${group}`, storage)
 
   } catch (erro) {
     throw (erro);

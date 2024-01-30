@@ -19,7 +19,7 @@ export function NewGroup() {
       // Código para verificar se o nome da turma foi informado
         // trim tira os espaços em branco do começo e do fim da string
       if(group.trim().length === 0) {
-        return Alert.alert("Novo Grupo", "Informe o nome da turma");
+        return Alert.alert("Nova Turma", "Informe o nome da turma");
       }
       
       await groupCreate(group);
@@ -27,9 +27,9 @@ export function NewGroup() {
     }catch (error){
       // intanceof verifica se o erro e do tipo AppError
       if(error instanceof AppError) {
-        Alert.alert('Novo Grupo', error.message)
+        Alert.alert('Nova Turma', error.message)
       } else {
-        Alert.alert('Novo Grupo', 'Não foi possível criar um novo grupo');
+        Alert.alert('Nova Turma', 'Não foi possível criar uma nova turma');
         console.log(error)
       }
     }
